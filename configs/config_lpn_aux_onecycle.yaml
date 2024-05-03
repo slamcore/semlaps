@@ -1,0 +1,45 @@
+# Data
+train_file: configs/scannetv2_train.txt
+val_file: configs/scannetv2_val.txt
+H: 480
+W: 640
+data_aug: True
+clean_data: True
+# Model
+modality: rgbd
+use_ssma: true
+reproject: True
+p_drop_depth: 0.0
+depth_err: 0.0
+aux_loss: True
+weight_aux: 0.2
+render: True
+fusion_mode: "average"
+decoder_in_dim: 128
+decoder_feat_dim: 256  # 256
+decoder_head_dim: 256  # 256
+window_size: 3
+skip: 20
+step: 1
+projection_dim: [128, 32, 64]
+# Training
+loss_reduction: mean
+loss_reduction_test: mean
+learning_rate: 0.0001  # 1e-4
+beta0: 0.9
+beta1: 0.999
+lr_decay: 0.2
+lr_decay_epochs: 6
+weight_decay: 0.0002
+scheduler: onecycle
+anneal_strategy: cos
+div_factor: 1.0
+pct_start: 0.05
+final_div_factor: 1000.0
+num_workers: 8
+batch_size: 6
+epochs: 20
+class_weights_file: configs/class_weights_scannet20_valid.txt
+print_every: 25
+validate_every: 1
+save_every: 2

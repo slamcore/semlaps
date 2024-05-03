@@ -1,0 +1,4 @@
+kitchen1
+big_table1 
+lab1 
+small_meeting_room1

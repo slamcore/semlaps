@@ -1,0 +1,49 @@
+# Data
+train_file: configs/scannetv2_train.txt  # configs/scannet5_train.txt
+val_file: configs/scannetv2_val.txt  # configs/scannet5_val.txt
+test_file: configs/scannetv2_val.txt
+log_root: logs/ral
+exp_name: scannet_RGBD_rgb_feat_reproject_avg_render_aux_onecycle
+H: 240
+W: 320
+data_aug: True
+clean_data: True
+depth_err: 0.0
+p_drop_depth: 0.0
+# Training
+modality: "rgbd"
+use_ssma: False
+reproject: True
+loss_reduction: "mean"
+loss_reduction_test: "mean"
+aux_loss: True # wether use auxilliary loss or not
+weight_aux: 0.2
+render: True
+fusion_mode: "average"
+decoder_in_dim: 128
+decoder_feat_dim: 256  # 256
+decoder_head_dim: 256  # 256
+window_size: 3
+projection_dim: [128, 32, 64]
+upsample_mode: "bilinear"
+learning_rate: 0.0001  # 1e-4
+scheduler: "onecycle"
+# parameters for step scheduler
+beta0: 0.9
+beta1: 0.999
+lr_decay: 0.2
+lr_decay_epochs: 6
+# parameters for onecycle scheduler
+div_factor: 1.0
+pct_start: 0.05
+final_div_factor: 1000.
+anneal_strategy: "cos"
+weight_decay: 0.0002
+num_workers: 8  # 8
+batch_size: 36
+epochs: 20
+class_weights_file: configs/class_weights_scannet20_valid.txt
+ignore_unlabeled: True
+print_every: 25
+validate_every: 1
+save_every: 1

@@ -1,0 +1,35 @@
+# Data
+train_file: configs/scannetv2_train.txt
+val_file: configs/scannetv2_val.txt
+# Model
+weight_in: xyz+vi+cov_dir
+k: 64
+use_xyz: True  # use xyz as geometric feature
+input_channel: 30  # 21 + 3 + 3 + 3
+feat_type: prob
+data_aug: True
+mid_dim: 16  # 16 WeightNet output dim
+hidden_unit: [8, 8]  # [8, 8] weight_mlp hidden dim
+hidden_dims: [64, 64]  # [64, 64] feature_mlp hidden dim
+classifier_hidden_dims: [64, 32]  # [64, 32]
+# Training
+loss_reduction: mean
+loss_reduction_test: mean
+learning_rate: 0.0005
+batch_size: 12
+beta0: 0.9
+beta1: 0.999
+lr_decay: 0.2
+lr_decay_epochs: 30
+weight_decay: 0.0002
+scheduler: onecycle
+anneal_strategy: cos
+final_div_factor: 1000.0
+div_factor: 1.0
+pct_start: 0.05
+num_workers: 8
+epochs: 100
+class_weights_file: configs/class_weights_scannet20_valid.txt
+print_every: 25
+validate_every: 1
+save_every: 1
