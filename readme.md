@@ -41,7 +41,7 @@ Unfortunately, we are not able to provide the code for this part. Please refer t
 
 
 ### 2.2 SMR dataset
-Please find the Semantic Mapping for Realsense dataset [here] (https://drive.google.com/file/d/1_jHFrrQj6_9JK6G4NkTSoWSDiLESeE-q/view?usp=drive_link). 
+Please find the Semantic Mapping for Realsense dataset [here](https://drive.google.com/file/d/1_jHFrrQj6_9JK6G4NkTSoWSDiLESeE-q/view?usp=drive_link). 
 
 ## 3. Train LPN
 
@@ -119,7 +119,7 @@ To reproduce results on the SMR dataset from the paper, please do steps 1, 2, 3 
 
 ### Run ScanNet sequential simulator
 
-First download example scannet `scene0645_00` from [here](https://drive.google.com/file/d/1VRDydi0OVoXVVH-05EnibavFEByQH9a-/view?usp=drive_link) and extract it under `$SCANNET_ROOT`. You then should expect to have the following directory structure:
+First download example scannet `scene0645_00` from [here](https://drive.google.com/file/d/1J-TR-B27bXkIew1pekXNxIwVz8BZriv7/view?usp=sharing) and extract it under `$SCANNET_ROOT`. You then should expect to have the following directory structure:
 ```
 $SCANNET_ROOT
 ├── scene0645_00
@@ -136,12 +136,12 @@ $SCANNET_ROOT
     scene0645_00_vh_clean_2.ply
 ...
 ```
-Then you need to update the ScanNet root path mapping [here](https://github.com/JingwenWang0226/differentiable_slam_map/blob/master/config.py#L8:L15), simply put your hostname and `$SCANNET_ROOT` as the key and value. 
+Then you need to update the ScanNet root path mapping [here](https://github.com/slamcore/semlaps/blob/master/config.py#L25:L28), simply put your hostname and `$SCANNET_ROOT` as the key and value. 
 
 Then you also need to download the checkpoint files:
-- LPN: https://drive.google.com/file/d/1kz_5DVowhN06TH3yflCN7UQCkS1FCHMi/view?usp=drive_link
-- LPN_rgb: https://drive.google.com/file/d/1E7e_Prhyq4iH09n99_ZhBwV4rSF3mYhC/view?usp=drive_link
-- SegConvNet: https://drive.google.com/file/d/1FN8CYwOD4lB1gIto3KLSEuKKkWH29XM0/view?usp=drive_link
+- LPN: [here](https://drive.google.com/file/d/1Ozn6Kg69R-yBHoMbDHKn64BurT1VmlN5/view?usp=sharing)
+- LPN_rgb: [here](https://drive.google.com/file/d/1b41kXCypAh_YJwDA1oRqK_GwZOieYuwh/view?usp=sharing)
+- SegConvNet: [here](https://drive.google.com/file/d/1QROJyPaeryMphANQrI45pYqrEr3AMqjC/view?usp=sharing)
 
 And extract them under `$EXP_DIR`. Then run the following command:
 ```
@@ -150,7 +150,7 @@ python sequential_runner_scannet.py --exp_dir $EXP_DIR --scene scene0645_00 --ma
 This will save the results under `$EXP_DIR/scannet/scene0645_00_skip20`
 
 ### Run RealSense sequential simulator
-First download example RealSense sequence`kitchen1` from [here](https://drive.google.com/file/d/1v_1qDDKSVuMRtGYM8zIprR8xGKgPXMGU/view?usp=drive_link) and extract it under `$SLAMCORE_ROOT`. You then should expect to have the following directory structure:
+First download example RealSense sequence`kitchen1` from [here](https://drive.google.com/file/d/1hptm3W6VhPkieO-G-oyf3wly8Oe_B-m2/view?usp=sharing) and extract it under `$SLAMCORE_ROOT`. You then should expect to have the following directory structure:
 ```
 $SLAMCORE_ROOT
 ├── kitchen1
@@ -173,7 +173,7 @@ $SLAMCORE_ROOT
     global_map_mesh.clean.ply
 ...
 ```
-Then you need to update the SMR root path mapping [here](https://github.com/JingwenWang0226/differentiable_slam_map/blob/master/config.py#L8:L15), 
+Then you need to update the SMR root path mapping [here](https://github.com/slamcore/semlaps/blob/master/config.py#L31:L34), 
 Note that `align.txt` is a transformation matrix (translation only) to shift the origin to approximately `np.min(verts, axis=0)`. You can simply save it when creating the mesh.
 
 And extract them under `$EXP_DIR`. Then run the following command:
